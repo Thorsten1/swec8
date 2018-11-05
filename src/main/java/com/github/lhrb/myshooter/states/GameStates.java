@@ -1,20 +1,25 @@
 package com.github.lhrb.myshooter.states;
 
-public class GameStates {
-    private State[] states = { new PauseMenu(), new MainMenu(), new GameSingle() };
-    private int current = 0;
+import java.util.HashMap;
 
-    public void setState(int state){
+public class GameStates {
+
+    HashMap<String,State> gameStates = new HashMap();
+    private String current;
+
+    public GameStates() {
+        gameStates.put("MainMenu", new MainMenu());
+        gameStates.put("GameSingle", new GameSingle());
+        gameStates.put("PauseMenu", new PauseMenu());
+        current = "MainMenu";
+    }
+
+    public void setState(String state){
         this.current = state;
     }
 
-    public void stateRender(){
-        states[current].stateRender();
-    }
-    void stateEnter(){
-        states[current].stateRender();
-    }
-    void stateExit(){
-        states[current].stateRender();
-    }
+    public void stateRender() { gameStates.get(current).stateRender(); }
+    public void stateEnter() { gameStates.get(current).stateEnter(); }
+    public void stateExit() { gameStates.get(current).stateExit(); }
+
 }

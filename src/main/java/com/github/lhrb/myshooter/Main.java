@@ -52,13 +52,15 @@ public class Main implements Runnable {
     public void init() {
         // Check if glfw starts correctly
         if (!glfwInit()) {
-            // TODO: we have to handle if glfw does not initiate correctly
+            throw new IllegalStateException("Failed to initialize GLFW!");
         }
         glfwWindowHint(GLFW_RESIZABLE, GL_TRUE);
         gameWindow = glfwCreateWindow(WINDOW_WIDTH, WINDOW_HEIGHT, GAME_NAME, NULL, NULL);
 
         if (gameWindow == 0) {
             // TODO: we have to handle if glfw can not create a Window
+            throw new IllegalStateException("Failed to create Window!");
+
         }
 
         //get position and center widow
@@ -73,8 +75,8 @@ public class Main implements Runnable {
         glfwSetKeyCallback(gameWindow, new Input());
 
         // Prepare the game window settings
-        glfwMakeContextCurrent(gameWindow);
         glfwShowWindow(gameWindow);
+        glfwMakeContextCurrent(gameWindow);
         GL.createCapabilities();
 
 
@@ -96,6 +98,7 @@ public class Main implements Runnable {
 
             if (glfwWindowShouldClose(gameWindow)) {
                 running = false;
+                glfwTerminate();
             }
         }
     }
@@ -107,8 +110,17 @@ public class Main implements Runnable {
     public void update() {
         glfwPollEvents();
 
-        if (Input.keys[GLFW_KEY_SPACE]) {
-            System.out.println("I pressed space and released it!");
+        if (Input.keys[GLFW_KEY_F1]) {
+            System.out.println("I pressed F1 and released it!");
+            gameState.setState("MainMenu");
+        }
+        if (Input.keys[GLFW_KEY_F2]) {
+            System.out.println("I pressed F2 and released it!");
+            gameState.setState("PauseMenu");
+        }
+        if ( Input.keys[GLFW_KEY_F3]) {
+            System.out.println("I pressed F3 and released it!");
+            gameState.setState("GameSingle");
         }
     }
 
