@@ -32,7 +32,7 @@ switch ( OperatingSystem.current() ) {
 }
 
 // Define the main class for the application
-mainClassName = 'com.github.lhrb.myshooter.Game'
+mainClassName = 'com.github.lhrb.myshooter.Main'
 
 
 // In this section you declare where to find the dependencies of your project
