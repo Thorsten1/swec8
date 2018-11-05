@@ -22,7 +22,7 @@ public class Main implements Runnable {
     // This is the ID for the Window
     private long gameWindow;
 
-    private GameStates gameState = new GameStates();
+    private SceneManager gameState = new SceneManager();
 
 
     /**
