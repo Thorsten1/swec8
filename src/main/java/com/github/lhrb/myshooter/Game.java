@@ -7,6 +7,9 @@ import static org.lwjgl.glfw.GLFW.*;
 import org.lwjgl.opengl.GL;
 import static org.lwjgl.opengl.GL11.*;
 import static org.lwjgl.system.MemoryUtil.*;
+import com.github.lhrb.myshooter.text.*;
+import com.github.lhrb.myshooter.graphic.Renderer;
+import com.github.lhrb.myshooter.graphic.Color;
 
 public class Game implements Runnable {
     /* Config start */
@@ -21,6 +24,8 @@ public class Game implements Runnable {
     // This is the ID for the Window
     private long gameWindow;
 
+    protected Renderer renderer;
+
     /**
      * Default Constructor initializing static vars for our game
      */
@@ -29,6 +34,7 @@ public class Game implements Runnable {
         WINDOW_WIDTH = 1024;
         WINDOW_HEIGHT = 768;
         gameWindow = 0;
+        renderer = new Renderer();
     }
 
 
@@ -56,6 +62,9 @@ public class Game implements Runnable {
             // TODO: we have to handle if glfw can not create a Window
         }
 
+
+
+
         //get position and center widow
         GLFWVidMode vidmode = glfwGetVideoMode(glfwGetPrimaryMonitor());
 
@@ -71,7 +80,7 @@ public class Game implements Runnable {
         glfwMakeContextCurrent(gameWindow);
         glfwShowWindow(gameWindow);
         GL.createCapabilities();
-
+        renderer.init();
 
         glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
         glEnable(GL_DEPTH_TEST);
@@ -91,6 +100,7 @@ public class Game implements Runnable {
 
             if (glfwWindowShouldClose(gameWindow)) {
                 running = false;
+                renderer.dispose();
             }
         }
     }
@@ -112,6 +122,8 @@ public class Game implements Runnable {
      */
     public void render() {
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+        Font myfont = new Font();
+        myfont.drawText(renderer, "Das ist ein test",100.0f,100.0f, Color.BLACK);
         glfwSwapBuffers(gameWindow);
     }
 
