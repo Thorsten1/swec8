@@ -17,7 +17,7 @@ public class TestSceneManager {
 
     @Before
     public void setUp() {
-        testSm = mock(SceneManager.class);
+        testSm = new SceneManager();
     }
 
     @After
