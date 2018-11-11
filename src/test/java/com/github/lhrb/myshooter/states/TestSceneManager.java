@@ -8,8 +8,7 @@ import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-
-import java.util.HashMap;
+import org.mockito.internal.matchers.Null;
 
 public class TestSceneManager {
 
@@ -34,6 +33,12 @@ public class TestSceneManager {
     @Test
     public void testSetStateInvalid() {
         testSm.setState("NoState");
+        assertTrue(testSm.getState() instanceof MainMenu);
+    }
+
+    @Test
+    public void testSetStateNull() {
+        testSm.setState(null);
         assertTrue(testSm.getState() instanceof MainMenu);
     }
 

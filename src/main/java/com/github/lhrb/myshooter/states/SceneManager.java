@@ -12,7 +12,7 @@ import java.util.HashMap;
  */
 public class SceneManager {
 
-    HashMap<String,State> gameStates = new HashMap<String, State>();
+    private HashMap<String,State> gameStates = new HashMap<String, State>();
     private State current;
 
     /**
