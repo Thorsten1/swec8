@@ -30,8 +30,8 @@ public class Main implements Runnable {
      */
     public Main() {
         GAME_NAME = "myShooter";
-        WINDOW_WIDTH = 1024;
-        WINDOW_HEIGHT = 768;
+        WINDOW_WIDTH = 800;
+        WINDOW_HEIGHT = 600;
         gameWindow = 0;
 
     }
@@ -69,7 +69,7 @@ public class Main implements Runnable {
         if (vidmode != null) {
             glfwSetWindowPos(gameWindow, (vidmode.width() - WINDOW_WIDTH) / 2, (vidmode.height() - WINDOW_HEIGHT) / 2);
         } else {
-            // TODO: we have to handle if if no Video Mode can be found
+            // TODO: we have to handle if no Video Mode can be found
         }
 
         glfwSetKeyCallback(gameWindow, new Input());
@@ -121,6 +121,14 @@ public class Main implements Runnable {
         if ( Input.keys[GLFW_KEY_F3]) {
             System.out.println("I pressed F3 and released it!");
             gameState.setState("GameSingle");
+        }
+        if ( Input.keys[GLFW_KEY_F4]) {
+            System.out.println("I pressed F4 and kind of released it!");
+            gameState.setState("Highscore");
+        }
+        if ( Input.keys[GLFW_KEY_F5]) {
+            System.out.println("I pressed F5 and probably released it!");
+            gameState.setState("KeyBindings");
         }
     }
 

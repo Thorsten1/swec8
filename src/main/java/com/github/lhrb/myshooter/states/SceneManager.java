@@ -20,7 +20,9 @@ public class SceneManager {
      */
     public SceneManager() {
         gameStates.put("MainMenu", new MainMenu());
+        gameStates.put("KeyBindings",new KeyBindings());
         gameStates.put("GameSingle", new GameSingle());
+        gameStates.put("Highscore",new Highscore());
         gameStates.put("PauseMenu", new PauseMenu());
         current = gameStates.get("MainMenu");
     }
