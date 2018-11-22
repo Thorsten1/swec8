@@ -24,6 +24,7 @@ public class SceneManager {
         gameStates.put("GameSingle", new GameSingle());
         gameStates.put("Highscore",new Highscore());
         gameStates.put("PauseMenu", new PauseMenu());
+        gameStates.put("LevelSelect",new LevelSelect());
         current = gameStates.get("MainMenu");
     }
 

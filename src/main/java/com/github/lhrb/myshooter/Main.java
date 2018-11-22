@@ -130,6 +130,11 @@ public class Main implements Runnable {
             System.out.println("I pressed F5 and probably released it!");
             gameState.setState("KeyBindings");
         }
+        if ( Input.keys[GLFW_KEY_F6]) {
+            System.out.println("I pressed F6 and most certainly released it!");
+            gameState.setState("LevelSelect");
+        }
+
     }
 
     /**
